@@ -13,8 +13,8 @@ const port = process.env.PORT || 5000;
 app.use(bodyParser.json());
 app.use(cors());
 
-const accountSid = '';
-const authToken = '';
+const accountSid = 'ACe8ee2275d1d0ce5eb37bda4d339991d8';
+const authToken = 'f14ad9b0d964d52e9c4854babfccf7d1';
 const client = require('twilio')(accountSid, authToken);
 
 
@@ -123,7 +123,7 @@ app.post('/send-otp', async (req, res) => {
     // Send OTP via Twilio SMS
     await client.messages.create({
       body: `Your Mentor OTP is: ${otp}`,
-      from: '', // Replace with your Twilio phone number
+      from: '+17068082864', // Replace with your Twilio phone number
       to: formattedMobile,
     });
 
