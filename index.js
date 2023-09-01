@@ -5,6 +5,9 @@ const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
 const twilio = require('twilio');
 const otpGenerator = require('otp-generator');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -23,7 +26,7 @@ const otpStore = {};
 
 // MongoDB connection setup
 mongoose
-  .connect('mongodb://127.0.0.1:27017/reactnativesignup?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.8.0', {
+  .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
