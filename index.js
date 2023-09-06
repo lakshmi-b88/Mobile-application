@@ -1,4 +1,5 @@
 const express = require('express');
+//const serverless = require('serverless-http');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const bcrypt = require('bcrypt');
@@ -16,8 +17,8 @@ const port = process.env.PORT || 5000;
 app.use(bodyParser.json());
 app.use(cors());
 
-const accountSid = 'ACe8ee2275d1d0ce5eb37bda4d339991d8';
-const authToken = 'f14ad9b0d964d52e9c4854babfccf7d1';
+const accountSid = process.env.account_Sid ;
+const authToken = process.env.auth_Token;
 const client = require('twilio')(accountSid, authToken);
 
 
@@ -202,6 +203,8 @@ app.post('/reset-password', async (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
+
+//module.exports.handler = serverless(app);
 
 
 
